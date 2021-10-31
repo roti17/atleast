@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "repl_python3_AutomaticRoastedBusiness"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+consultor = "^0.2.0"
+Flask = "^2.0.1"
+SQLAlchemy = "^1.4.22"
+textblob = "^0.17.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

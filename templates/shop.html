@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/style.css')}}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+   <style>
+    body{
+      background-color:#4BB7D0;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"style="font-family:'Avantgarde', TeX Gyre Adventor, URW Gothic L, sans-serif;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{url_for('home')}}" id='home'>home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" id = 'shop'>
+          <a class="navbar-brand" aria-current="page" href="shop">library</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="about_us">about us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="navbar-brand" href="add_product">add</a>
+        </li>        
+  </div>
+</nav>
+
+      <br><br>
+     <h1 style="color:white; text-align: center; font-family: Tahoma, Verdana, sans-serif;font-weight: bold;"
+">Movies</h1><br><br>
+
+    {% if movies %}
+    <center><div class="col-xs-12">
+    {% for Movie in movies %}
+    <div class="center col-sm-3" style="display: inline-grid; text-align: center">
+            <center><img src="{{Movie.pic_link}}" width="240" height="360"></center><br>
+      <h4 style="text-align: center; ">{{Movie.movie_name}}</h4> <br>
+      <p style="text-align: center; font-family: 'Encode Sans Condensed';"> director: {{Movie.director}}<br>
+      description: {{Movie.description}}<br>
+      release year: {{Movie.release_year}}<br>
+      price: {{Movie.price}} ₪</p>
+      <center><a href="/buying_item"><button id="buy"style="text-align: center;">rent this movie</button></a>
+      <a href="{{url_for('delete', id = Movie.id)}}"><button id="buy"style="text-align: center; background-color:#BE1AFF; width: 100px;">delete</button></a>
+       </center><br>
+    </div>
+      {% endfor %}
+    </div></center>
+    
+    {% else %}
+      <center>There are no current Movies in the database. Make sure to create some!<br><br>
+      <a href="/add_product"><button id="buy"style="text-align: center;">add movie</button></a></center>
+    {% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
+
